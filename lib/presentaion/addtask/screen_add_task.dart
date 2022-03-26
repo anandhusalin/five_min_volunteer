@@ -15,6 +15,7 @@ class AddScreen extends StatefulWidget {
 
 class _AddScreenState extends State<AddScreen> {
   late ServiceModel serviceModel;
+  final estimatedControler = TextEditingController();
   final probleController = TextEditingController();
   final locationController = TextEditingController();
   final descripationController = TextEditingController();
@@ -163,6 +164,14 @@ class _AddScreenState extends State<AddScreen> {
                   controller: solutionDescriptionController,
                   title: 'Description',
                   hint: 'Descripation'),
+              ConstSize.kheight,
+              Inputfield(
+                  height: 50,
+                  controller: estimatedControler,
+                  title: "Estimated Days",
+                  hint: 'Estimated Days'),
+              ConstSize.kheight,
+
               const Divider(),
               const Text('Number of Volunteer'),
               const SizedBox(
@@ -240,6 +249,7 @@ class _AddScreenState extends State<AddScreen> {
                     if (solutionController.text.isNotEmpty &&
                         solutionDescriptionController.text.isNotEmpty &&
                         count != 0 &&
+                        estimatedControler.text.isEmpty&&
                         probleController.text.isNotEmpty &&
                         locationController.text.isNotEmpty &&
                         descripationController.text.isNotEmpty) {

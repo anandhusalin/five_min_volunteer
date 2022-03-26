@@ -1,7 +1,9 @@
 import 'package:bloc_volunteer_service/model/home_screen_model.dart';
-import 'package:bloc_volunteer_service/presentaion/widgets/taskpage.dart';
+
 import 'package:bloc_volunteer_service/services/home_services.dart';
 import 'package:flutter/material.dart';
+
+import '../service_info/screen_service_info.dart';
 
 class ServiceList extends StatefulWidget {
   const ServiceList({
@@ -23,8 +25,8 @@ class _ServiceListState extends State<ServiceList> {
   void initState() {
     super.initState();
     homeService.getData().then((value) {
-      print('value');
-      print(value);
+      // print('value');
+      // print(value);
       setState(() {
         service = value;
         isLoading = false;
@@ -56,7 +58,7 @@ class _ServiceListState extends State<ServiceList> {
                         child: Column(
                       children: [
                         Text(service!.data![0][index].taskTitle.toString()),
-                        Text(service!.data![0][index].id.toString())
+                        Text(service!.data![0][index].id.toString()),
                       ],
                     )));
               }),

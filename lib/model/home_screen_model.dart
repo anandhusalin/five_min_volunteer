@@ -27,8 +27,7 @@ class HomeModel {
         status: json["status"],
         code: json["code"],
         message: json["message"],
-        data: List<List<Datum>>.from(json["data"]
-            .map((x) => List<Datum>.from(x.map((x) => Datum.fromJson(x))))),
+        data: List<List<Datum>>.from(json["data"].map((x) => List<Datum>.from(x.map((x) => Datum.fromJson(x))))),
         misc: Misc.fromJson(json["misc"]),
       );
 
@@ -36,8 +35,7 @@ class HomeModel {
         "status": status,
         "code": code,
         "message": message,
-        "data": List<dynamic>.from(
-            data!.map((x) => List<dynamic>.from(x.map((x) => x.toJson())))),
+        "data": List<dynamic>.from(data!.map((x) => List<dynamic>.from(x.map((x) => x.toJson())))),
         "misc": misc!.toJson(),
       };
 }

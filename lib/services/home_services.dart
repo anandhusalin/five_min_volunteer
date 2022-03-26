@@ -10,14 +10,13 @@ class HomeService {
         Uri.parse('https://volunteer.cyberfort.co.in/api/popularServices'));
     Map<String, dynamic> map = json.decode(response.body);
 
-    //joji.add(map["data"]);
-    print(map);
+    // print(map);
     var jo = map['data'];
-    print(jo);
-    print(jo[0]);
+    // print(jo);
+    // print(jo[0]);
     joji = jo[0].map((entry) => (entry['task_title'])).toList();
 
-    print(joji);
+    // print(joji);
     // setState(() {
     //   joji1.add(joji);
     // });

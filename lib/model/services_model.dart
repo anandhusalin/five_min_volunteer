@@ -11,6 +11,8 @@ String serviceModelToJson(ServiceModel data) => json.encode(data.toJson());
 
 class ServiceModel {
   ServiceModel({
+    this.estimatedTime,
+
     this.taskTitle,
     this.taskDesc,
     this.volunteerLimit,
@@ -26,11 +28,13 @@ class ServiceModel {
   String? issueTitle;
   String? issueLoc;
   String? issueDesc;
+  int? estimatedTime;
 
 
 
   factory ServiceModel.fromJson(Map<String, dynamic> json) => ServiceModel(
         taskTitle: json["task_title"],
+    estimatedTime: json["est_duration"],
         taskDesc: json["task_desc"],
         volunteerLimit: json["volunteer_limit"],
         issueTitle: json["issue_title"],
@@ -40,6 +44,8 @@ class ServiceModel {
 
   Map<String, dynamic> toJson() => {
         "task_title": taskTitle,
+         "est_duration": estimatedTime,
+
         "task_desc": taskDesc,
         "volunteer_limit": volunteerLimit,
         "issue_title": issueTitle,
