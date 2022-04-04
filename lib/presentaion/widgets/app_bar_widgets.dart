@@ -17,6 +17,11 @@ class AppBarWidgets extends StatelessWidget {
             ConstSize.kwidth,
             Text(
               title,
+              style: const TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 26,
+                color:primaryColor
+              ),
               // style: GoogleFonts.montserrat(
               //     fontSize: 25,
               //     color: Colors.orange,
@@ -27,6 +32,11 @@ class AppBarWidgets extends StatelessWidget {
               children: const [
                 Text(
                   'Dubai',
+                  style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 15,
+                      color:primaryColor
+                  ),
                   // style: GoogleFonts.montserrat(
                   //     fontSize: 25,
                   //     color: Colors.blue,
@@ -35,7 +45,7 @@ class AppBarWidgets extends StatelessWidget {
                 ConstSize.kwidth,
                 Icon(
                   Icons.location_on,
-                  color: primaryColor,
+                  color: secondaryColor,
                 ),
                 ConstSize.kwidth,
               ],

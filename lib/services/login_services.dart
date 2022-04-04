@@ -7,7 +7,7 @@ import 'package:http/http.dart' as http;
 class LoginService {
   Future<LoginResponse> login(LoginRequestModel loginModel) async {
     final response = await http.post(
-      Uri.parse('https://volunteer.cyberforttech.com/api/login'),
+      Uri.parse('https://volunteer.cyberfort.co.in/api/login'),
       body: jsonEncode(
         loginModel.toJson(),
       ),
@@ -15,6 +15,9 @@ class LoginService {
     );
 
     var data = jsonDecode(response.body);
+
+    print("response");
+    print(response.body);
 
     if (response.statusCode == 200 && data['message'] == null) {
       return LoginResponse.fromJson(data);

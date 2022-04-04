@@ -16,7 +16,17 @@ class ScreenHome extends StatefulWidget {
   State<ScreenHome> createState() => _ScreenHomeState();
 }
 
-class _ScreenHomeState extends State<ScreenHome> {
+class _ScreenHomeState extends State<ScreenHome>
+    with SingleTickerProviderStateMixin {
+  late TabController _tabController;
+  @override
+  void initState() {
+    _tabController = TabController(length: 9, vsync: this);
+    // ignore: todo
+    // TODO: implement initState
+    super.initState();
+  }
+
   int index = 0;
   Widget movingCard() {
     return CarouselSlider(
@@ -66,7 +76,7 @@ class _ScreenHomeState extends State<ScreenHome> {
               //popular section
 
               const HomeSection3(),
-               ServiceList(),
+              const ServiceList(),
               const Padding(
                 padding: EdgeInsets.all(10.0),
                 child: Align(
@@ -74,10 +84,101 @@ class _ScreenHomeState extends State<ScreenHome> {
                     child: Text(
                       'CATEGORY',
                       style:
-                      TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                          TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                     )),
               ),
-              const CategorySection(),
+              CategorySection(),
+
+              // Flexible(
+              //   child: Container(
+              //     height: 90,
+              //     decoration: const BoxDecoration(color: Colors.white),
+              //     child: TabBar(
+              //         isScrollable: true,
+              //         controller: _tabController,
+              //         labelColor: Colors.black,
+              //         indicator: BoxDecoration(
+              //             color: Colors.blue,
+              //             borderRadius: BorderRadius.circular(10)),
+              //         unselectedLabelColor: Colors.grey,
+              //         tabs: const [
+              //           SizedBox(
+              //             width: 50,
+              //             height: 50,
+              //             child: Tab(
+              //               icon: Icon(Icons.height),
+              //               text: 'HIGH',
+              //             ),
+              //           ),
+              //           SizedBox(
+              //             width: 50,
+              //             height: 50,
+              //             child: Tab(
+              //               text: 'MEDIUM',
+              //               icon: Icon(Icons.star),
+              //             ),
+              //           ),
+              //           SizedBox(
+              //             height: 50,
+              //             width: 50,
+              //             child: Tab(
+              //               text: 'LOW',
+              //               icon: Icon(Icons.height),
+              //             ),
+              //           ),
+              //           SizedBox(
+              //             width: 50,
+              //             height: 50,
+              //             child: Tab(
+              //               text: 'HIGH',
+              //               icon: Icon(Icons.height),
+              //             ),
+              //           ),
+              //           SizedBox(
+              //             height: 50,
+              //             width: 50,
+              //             child: Tab(
+              //               text: 'MEDIUM',
+              //               icon: Icon(Icons.height),
+              //             ),
+              //           ),
+              //           SizedBox(
+              //             width: 50,
+              //             height: 50,
+              //             child: Tab(
+              //               text: 'LOW',
+              //               icon: Icon(Icons.height),
+              //             ),
+              //           ),
+              //           Tab(
+              //             text: 'HIGH',
+              //             icon: Icon(Icons.height),
+              //           ),
+              //           Tab(
+              //             text: 'MEDIUM',
+              //             icon: Icon(Icons.height),
+              //           ),
+              //           Tab(
+              //             text: 'LOW',
+              //             icon: Icon(Icons.height),
+              //           )
+              //         ]),
+              //   ),
+              // ),
+              // Expanded(
+              //   child: TabBarView(controller: _tabController, children: const [
+              //     ServiceList(),
+              //     ServiceList(),
+              //     ServiceList(),
+              //     ServiceList(),
+              //     ServiceList(),
+              //     ServiceList(),
+              //     ServiceList(),
+              //     ServiceList(),
+              //     ServiceList(),
+              //   ]),
+              // ),
+
               const HomeSection3(),
               const ServiceList(),
             ],
@@ -105,11 +206,8 @@ class HomeSection3 extends StatelessWidget {
           Row(
             children: const [
               Text('View All'),
-
               SizedBox(
-
                 width: 5,
-
               ),
               Icon(
                 Icons.arrow_forward_ios_outlined,

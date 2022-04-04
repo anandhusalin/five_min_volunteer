@@ -1,15 +1,15 @@
 // To parse this JSON data, do
 //
-//     final serviceByCategoryModel = serviceByCategoryModelFromJson(jsonString);
+//     final getCategoryModel = getCategoryModelFromJson(jsonString);
 
 import 'dart:convert';
 
-ServiceByCategoryModel serviceByCategoryModelFromJson(String str) => ServiceByCategoryModel.fromJson(json.decode(str));
+GetCategoryModel getCategoryModelFromJson(String str) => GetCategoryModel.fromJson(json.decode(str));
 
-String serviceByCategoryModelToJson(ServiceByCategoryModel data) => json.encode(data.toJson());
+String getCategoryModelToJson(GetCategoryModel data) => json.encode(data.toJson());
 
-class ServiceByCategoryModel {
-  ServiceByCategoryModel({
+class GetCategoryModel {
+  GetCategoryModel({
     this.status,
     this.code,
     this.message,
@@ -23,7 +23,7 @@ class ServiceByCategoryModel {
   List<List<Datum>>? data;
   Misc? misc;
 
-  factory ServiceByCategoryModel.fromJson(Map<String, dynamic> json) => ServiceByCategoryModel(
+  factory GetCategoryModel.fromJson(Map<String, dynamic> json) => GetCategoryModel(
     status: json["status"],
     code: json["code"],
     message: json["message"],
@@ -43,28 +43,20 @@ class ServiceByCategoryModel {
 class Datum {
   Datum({
     this.id,
-    this.taskTitle,
-    this.estDuration,
-    this.imageName,
+    this.name,
   });
 
   int? id;
-  String? taskTitle;
-  int? estDuration;
-  String? imageName;
+  String? name;
 
   factory Datum.fromJson(Map<String, dynamic> json) => Datum(
     id: json["id"],
-    taskTitle: json["task_title"],
-    estDuration: json["est_duration"],
-    imageName: json["image_name"] == null ? null : json["image_name"],
+    name: json["name"],
   );
 
   Map<String, dynamic> toJson() => {
     "id": id,
-    "task_title": taskTitle,
-    "est_duration": estDuration,
-    "image_name": imageName == null ? null : imageName,
+    "name": name,
   };
 }
 

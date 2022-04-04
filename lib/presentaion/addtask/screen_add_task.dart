@@ -5,6 +5,8 @@ import 'package:bloc_volunteer_service/services/service_services.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:bloc_volunteer_service/core/constant.dart';
+import 'package:image_picker/image_picker.dart';
+import 'package:http/http.dart ' as http;
 
 class AddScreen extends StatefulWidget {
   const AddScreen({Key? key}) : super(key: key);
@@ -14,6 +16,14 @@ class AddScreen extends StatefulWidget {
 }
 
 class _AddScreenState extends State<AddScreen> {
+  List<XFile>? images;
+
+  final ImagePicker _picker = ImagePicker();
+  pickImage() async {
+    images = await _picker.pickMultiImage();
+    setState(() {});
+  }
+
   late ServiceModel serviceModel;
   final estimatedControler = TextEditingController();
   final probleController = TextEditingController();
@@ -171,7 +181,6 @@ class _AddScreenState extends State<AddScreen> {
                   title: "Estimated Days",
                   hint: 'Estimated Days'),
               ConstSize.kheight,
-
               const Divider(),
               const Text('Number of Volunteer'),
               const SizedBox(
@@ -249,13 +258,13 @@ class _AddScreenState extends State<AddScreen> {
                     if (solutionController.text.isNotEmpty &&
                         solutionDescriptionController.text.isNotEmpty &&
                         count != 0 &&
-                        estimatedControler.text.isEmpty&&
+                        estimatedControler.text.isEmpty &&
                         probleController.text.isNotEmpty &&
                         locationController.text.isNotEmpty &&
                         descripationController.text.isNotEmpty) {
                       serviceModel.issueDesc = descripationController.text;
                       serviceModel.issueLoc = locationController.text;
-                      serviceModel.issueTitle = solutionController.text;
+                      serviceModel.issueTitle = probleController.text;
                       serviceModel.taskDesc =
                           solutionDescriptionController.text;
                       serviceModel.taskTitle = solutionController.text;
@@ -264,7 +273,14 @@ class _AddScreenState extends State<AddScreen> {
                     ServicesService servicesService = ServicesService();
                     servicesService.signup(serviceModel).then((value) {
                       print(value.message);
-                      Get.to(() => const RequirementsScreen());
+                      Get.to(() => RequirementsScreen(
+                            desc: solutionDescriptionController.text,
+                            estDur: estimatedControler.text,
+                            issueDesc: descripationController.text,
+                            issueLoc: locationController.text,
+                            issuetitle: probleController.text,
+                            title: solutionController.text,
+                          ));
                     });
                   },
                   child: const Text('Add requirement'))

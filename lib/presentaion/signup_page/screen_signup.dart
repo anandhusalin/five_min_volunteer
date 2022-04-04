@@ -211,7 +211,7 @@ class _SignUpState extends State<SignUp> {
                     GestureDetector(
                       onTap: () {
                         Navigator.of(context).pushReplacement(MaterialPageRoute(
-                          builder: (context) => ScreenMainPage(),
+                          builder: (context) => const Login(),
                         ));
                       },
                       child: const Text(

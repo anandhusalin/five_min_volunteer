@@ -2,11 +2,29 @@ import 'package:bloc_volunteer_service/core/colors/colors.dart';
 import 'package:bloc_volunteer_service/core/constant.dart';
 import 'package:bloc_volunteer_service/presentaion/widgets/text_controllers.dart';
 import 'package:flutter/material.dart';
+import 'package:get_storage/get_storage.dart';
 
 import '../widgets/inputfield.dart';
+import 'package:http/http.dart' as http;
 
 class RequirementsScreen extends StatefulWidget {
-  const RequirementsScreen({Key? key}) : super(key: key);
+  final String title;
+  final String desc;
+  final String issuetitle;
+  final String issueDesc;
+  final String issueLoc;
+  final String estDur;
+  String? volLimit;
+
+  RequirementsScreen({
+    Key? key,
+    required this.title,
+    required this.desc,
+    required this.issuetitle,
+    required this.issueDesc,
+    required this.issueLoc,
+    required this.estDur,
+  }) : super(key: key);
 
   @override
   State<RequirementsScreen> createState() => _RequirementsScreenState();
@@ -145,6 +163,7 @@ class _RequirementsScreenState extends State<RequirementsScreen> {
     defaultvalue19,
     defaultvalue20,
   ];
+  final box = GetStorage();
   // String defaultvalue = 'a';
   int length = 0;
   @override
@@ -349,5 +368,32 @@ class _RequirementsScreenState extends State<RequirementsScreen> {
         )),
       ),
     );
+  }
+
+  addTaskApi() async {
+    var headers = {'Authorization': box.read('Token').toString()};
+    var request = http.MultipartRequest('POST',
+        Uri.parse('https://volunteer.cyberfort.co.in/api/save-service'));
+    request.fields.addAll({
+      'task_title': widget.title,
+      'task_desc': widget.desc,
+      'issue_title': widget.issuetitle,
+      'issue_loc': widget.issueLoc,
+      'issue_desc': widget.issueDesc,
+      'est_duration': widget.estDur,
+      'task_requirement':
+          ' [ { "req_title": "Water", "req_count": 2, "req_unit": "Liter" }, { "req_title": "Manure", "req_count": 5, "req_unit": "Kilo" } ]',
+      'volunteer_limit': widget.volLimit.toString()
+    });
+
+    request.headers.addAll(headers);
+
+    http.StreamedResponse response = await request.send();
+
+    if (response.statusCode == 200) {
+      print(await response.stream.bytesToString());
+    } else {
+      print(response.reasonPhrase);
+    }
   }
 }

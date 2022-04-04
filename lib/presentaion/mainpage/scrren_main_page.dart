@@ -2,12 +2,13 @@ import 'package:flutter/material.dart';
 
 import 'package:bloc_volunteer_service/model/home_screen_model.dart';
 import 'package:bloc_volunteer_service/presentaion/addtask/screen_add_task.dart';
-import 'package:bloc_volunteer_service/presentaion/cart/screen_cart.dart';
+
 import 'package:bloc_volunteer_service/presentaion/home/screen_home.dart';
 import 'package:bloc_volunteer_service/presentaion/mainpage/widgets/bottom_nav.dart';
 import 'package:bloc_volunteer_service/presentaion/settings/screen_settings.dart';
 
 import '../profile/screen_profile.dart';
+import '../view_all/screen_view_all.dart';
 
 class ScreenMainPage extends StatelessWidget {
   ScreenMainPage({
@@ -16,10 +17,12 @@ class ScreenMainPage extends StatelessWidget {
 
   final _pages = [
     const ScreenHome(),
-    const Profile(user: []),
+    const ViewAll(),
     const AddScreen(),
+
+    const Profile(user: []),
     const Settings(),
-    const Cart()
+
   ];
   @override
   Widget build(BuildContext context) {

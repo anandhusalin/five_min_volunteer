@@ -29,12 +29,12 @@ class BottomNavigationWidgets extends StatelessWidget {
                 items: const [
                   BottomNavigationBarItem(icon: Icon(Icons.home), label: ''),
                   BottomNavigationBarItem(
-                      icon: Icon(Icons.account_box), label: ''),
+                      icon: Icon(Icons.list_sharp), label: ''),
                   BottomNavigationBarItem(icon: Icon(Icons.add), label: ''),
                   BottomNavigationBarItem(
-                      icon: Icon(Icons.settings), label: ''),
+                      icon: Icon(Icons.account_circle), label: ''),
                   BottomNavigationBarItem(
-                      icon: Icon(Icons.shopping_cart), label: ''),
+                      icon: Icon(Icons.settings), label: ''),
                 ]),
           );
         });

@@ -126,7 +126,7 @@ class _LoginState extends State<Login> {
                         width: double.infinity,
                         child: ElevatedButton(
                           style:
-                          ElevatedButton.styleFrom(primary: primaryColor),
+                              ElevatedButton.styleFrom(primary: primaryColor),
                           onPressed: () async {
                             if (emailController.text.trim().isEmpty) {
                               Get.snackbar('Error', 'Email field is empty');
@@ -148,6 +148,9 @@ class _LoginState extends State<Login> {
                                 });
                                 if (value.data != null) {
                                   box.write('user', 'value');
+                                  // box.write('token', value.data!.apiToken);
+                                  // print(box.read('token'));
+
                                   Navigator.pushReplacement(
                                       context,
                                       MaterialPageRoute(
