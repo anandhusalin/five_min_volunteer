@@ -67,15 +67,14 @@ class _ChatState extends State<Chat> {
                         ],
                       ),
                       const SizedBox(),
-                      Container(
-                          child: IconButton(
+                      IconButton(
                         onPressed: () {
                           _scaffoldState.currentState?.openDrawer();
                         },
                         icon: const Icon(Icons.menu_outlined),
                         iconSize: 24,
                         color: backgroundColor,
-                      )),
+                      ),
                       const SizedBox(),
                     ]),
                 const SizedBox(
@@ -99,7 +98,7 @@ class _ChatState extends State<Chat> {
                         topRight: Radius.circular(40))),
                 height: MediaQuery.of(context).size.height - 110,
                 width: MediaQuery.of(context).size.width,
-                child: ChatPage(),
+                child: const ChatPage(),
               ))
             ],
           )
