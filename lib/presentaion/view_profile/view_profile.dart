@@ -18,7 +18,7 @@ class _ViewProfileState extends State<ViewProfile> {
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
-          icon: Icon(
+          icon: const Icon(
             Icons.arrow_back,
             color: primaryColor,
           ),
@@ -31,10 +31,12 @@ class _ViewProfileState extends State<ViewProfile> {
         actions: [
           IconButton(
               onPressed: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => EditProfile()));
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const EditProfile()));
               },
-              icon: Icon(
+              icon: const Icon(
                 Icons.edit,
                 color: primaryColor,
               ))
@@ -42,24 +44,24 @@ class _ViewProfileState extends State<ViewProfile> {
       ),
       body: SingleChildScrollView(
         child: Container(
-          margin: EdgeInsets.symmetric(horizontal: 20),
+          margin: const EdgeInsets.symmetric(horizontal: 20),
           child: Column(
             children: [
-              Text(
+              const Text(
                 "Hello,",
                 style: TextStyle(
                     color: backgroundColor2,
                     fontSize: 30,
                     fontWeight: FontWeight.bold),
               ),
-              Text(
+              const Text(
                 "  Anandhu  ",
                 style: TextStyle(
                     color: primaryColor,
                     fontSize: 30,
                     fontWeight: FontWeight.bold),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 20,
               ),
               Stack(
@@ -79,7 +81,7 @@ class _ViewProfileState extends State<ViewProfile> {
                     child: Center(
                       child: Container(
                         child: IconButton(
-                          icon: Icon(Icons.edit),
+                          icon: const Icon(Icons.edit),
                           onPressed: () {},
                         ),
                         height: 40,
@@ -92,14 +94,14 @@ class _ViewProfileState extends State<ViewProfile> {
                   )
                 ],
               ),
-              SizedBox(
+              const SizedBox(
                 height: 40,
               ),
               Column(
                 children: [
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
+                    children: const [
                       Text(
                         'Name',
                         style: TextStyle(
@@ -118,7 +120,7 @@ class _ViewProfileState extends State<ViewProfile> {
                   ConstSize.kheight2,
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
+                    children: const [
                       Text(
                         'Profile Name',
                         style: TextStyle(
@@ -137,7 +139,7 @@ class _ViewProfileState extends State<ViewProfile> {
                   ConstSize.kheight2,
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
+                    children: const [
                       Text(
                         'Email',
                         style: TextStyle(
@@ -157,7 +159,7 @@ class _ViewProfileState extends State<ViewProfile> {
 
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
+                    children: const [
                       Text(
                         'Phone',
                         style: TextStyle(
@@ -176,7 +178,7 @@ class _ViewProfileState extends State<ViewProfile> {
                   ConstSize.kheight2,
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
+                    children: const [
                       Text(
                         'Password',
                         style: TextStyle(
@@ -195,7 +197,7 @@ class _ViewProfileState extends State<ViewProfile> {
                   ConstSize.kheight2,
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
+                    children: const [
                       Text(
                         'Gender',
                         style: TextStyle(
@@ -214,7 +216,7 @@ class _ViewProfileState extends State<ViewProfile> {
                   ConstSize.kheight2,
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
+                    children: const [
                       Text(
                         'Date Of Birth',
                         style: TextStyle(
@@ -229,7 +231,7 @@ class _ViewProfileState extends State<ViewProfile> {
                       ),
                     ],
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 60,
                   ),
 
@@ -265,10 +267,11 @@ class _ViewProfileState extends State<ViewProfile> {
                                 Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                        builder: (context) => EditProfile()));
+                                        builder: (context) =>
+                                            const EditProfile()));
                               },
-                              icon: Icon(Icons.edit)),
-                          Text(
+                              icon: const Icon(Icons.edit)),
+                          const Text(
                             "Edit Profile",
                             style: TextStyle(
                                 color: Colors.blue,
@@ -280,8 +283,8 @@ class _ViewProfileState extends State<ViewProfile> {
                         children: [
                           IconButton(
                               onPressed: () {},
-                              icon: Icon(Icons.logout_outlined)),
-                          Text(
+                              icon: const Icon(Icons.logout_outlined)),
+                          const Text(
                             "Logout",
                             style: TextStyle(
                                 color: Colors.blue,
@@ -296,10 +299,11 @@ class _ViewProfileState extends State<ViewProfile> {
                                 Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                        builder: (context) => EditPassword()));
+                                        builder: (context) =>
+                                            const EditPassword()));
                               },
-                              icon: Icon(Icons.password_outlined)),
-                          Text(
+                              icon: const Icon(Icons.password_outlined)),
+                          const Text(
                             "Edit Password",
                             style: TextStyle(
                                 color: Colors.blue,

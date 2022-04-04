@@ -1,7 +1,11 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.five_min_volunteer">
+<<<<<<< HEAD
    <uses-permission android:name="android.permission.INTERNET"/>
     
+=======
+    <uses-permission android:name="android.permission.INTERNET"/>
+>>>>>>> 42b29bf9a22a157423f85307bd031a52bc715b5c
    <application
         android:label="five_min_volunteer"
         android:name="${applicationName}"

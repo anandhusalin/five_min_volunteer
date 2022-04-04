@@ -54,7 +54,7 @@ class ProfileSection1 extends StatelessWidget {
           GestureDetector(
             onTap: () {
               Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => ViewProfile()));
+                  MaterialPageRoute(builder: (context) => const ViewProfile()));
             },
             child: Container(
               height: 50,
