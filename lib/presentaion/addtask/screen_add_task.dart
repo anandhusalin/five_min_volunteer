@@ -263,7 +263,7 @@ class _AddScreenState extends State<AddScreen> {
                     }
                     ServicesService servicesService = ServicesService();
                     servicesService.signup(serviceModel).then((value) {
-                      print(value.message);
+                    
                       Get.to(() => const RequirementsScreen());
                     });
                   },

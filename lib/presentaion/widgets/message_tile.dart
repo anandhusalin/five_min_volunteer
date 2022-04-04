@@ -3,7 +3,10 @@ import 'package:flutter/material.dart';
 import 'message_model_tiles.dart';
 
 class MessageTiles extends StatelessWidget {
-  const MessageTiles({required this.obj});
+  const MessageTiles({
+    Key? key,
+    required this.obj,
+  }) : super(key: key);
   final MessageTilesModel obj;
 
   @override

@@ -12,7 +12,7 @@ class ServicesService {
       ),
       headers: {"Content-Type": "application/json; charset=UTF-8"},
     );
-     print(response.body);
+   
     var data = jsonDecode(response.body);
     
 

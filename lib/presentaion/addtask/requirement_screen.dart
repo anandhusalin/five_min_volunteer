@@ -316,7 +316,7 @@ class _RequirementsScreenState extends State<RequirementsScreen> {
               ),
               ElevatedButton(
                   onPressed: () {
-                    print(requierment1.text);
+                 
                     setState(() {
                       length++;
                     });

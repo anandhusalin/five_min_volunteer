@@ -66,7 +66,7 @@ class _ScreenHomeState extends State<ScreenHome> {
               //popular section
 
               const HomeSection3(),
-               ServiceList(),
+              const ServiceList(),
               const Padding(
                 padding: EdgeInsets.all(10.0),
                 child: Align(
@@ -74,7 +74,7 @@ class _ScreenHomeState extends State<ScreenHome> {
                     child: Text(
                       'CATEGORY',
                       style:
-                      TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                          TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                     )),
               ),
               const CategorySection(),
@@ -105,11 +105,8 @@ class HomeSection3 extends StatelessWidget {
           Row(
             children: const [
               Text('View All'),
-
               SizedBox(
-
                 width: 5,
-
               ),
               Icon(
                 Icons.arrow_forward_ios_outlined,
