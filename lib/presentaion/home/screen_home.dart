@@ -1,12 +1,12 @@
 import 'package:bloc_volunteer_service/core/constant.dart';
 import 'package:bloc_volunteer_service/presentaion/home/widgets/search_idle.dart';
 import 'package:bloc_volunteer_service/presentaion/widgets/app_bar_widgets.dart';
-
+import 'package:bloc_volunteer_service/presentaion/widgets/category_section.dart';
 import 'package:bloc_volunteer_service/presentaion/widgets/service_list.dart';
+
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 
-import '../widgets/category_section.dart';
 import '../widgets/moving_card.dart';
 
 class ScreenHome extends StatefulWidget {
@@ -87,7 +87,7 @@ class _ScreenHomeState extends State<ScreenHome>
                           TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                     )),
               ),
-              CategorySection(),
+              const CategorySection(),
 
               // Flexible(
               //   child: Container(

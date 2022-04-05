@@ -13,6 +13,7 @@ class CategorySection extends StatefulWidget {
 }
 
 class _CategorySectionState extends State<CategorySection> {
+  int position = 0;
   List<ListItem> listItem = [
     ListItem(
         isSelected: true, icon: FontAwesomeIcons.home, tiitle: 'Generally'),
@@ -51,6 +52,7 @@ class _CategorySectionState extends State<CategorySection> {
                         onTap: () {
                           for (int i = 0; i < listItem.length; i++) {
                             setState(() {
+                              position = index;
                               if (index == i) {
                                 listItem[index].isSelected = true;
                               } else {
@@ -85,145 +87,142 @@ class _CategorySectionState extends State<CategorySection> {
                           ),
                         ),
                       ),
-                      Visibility(
-                        child: Text('reju '),
-                        // GridView.builder(
-                        //     gridDelegate:
-                        //         const SliverGridDelegateWithMaxCrossAxisExtent(
-                        //       maxCrossAxisExtent: 200,
-                        //       childAspectRatio: 3 / 2,
-                        //     ),
-                        //     itemBuilder: (BuildContext ctx, index) {
-                        //       return Container(
-                        //         alignment: Alignment.center,
-                        //         child: const Text("hai"),
-                        //       );
-                        //     }),
-                        visible: listItem[index].isSelected,
-                      ),
-                      Visibility(
-                          visible: listItem[index].isSelected,
-                          child: Text("bhama")
-                          // GridView.builder(
-                          //     gridDelegate:
-                          //         const SliverGridDelegateWithMaxCrossAxisExtent(
-                          //             maxCrossAxisExtent: 200,
-                          //             childAspectRatio: 3 / 2,
-                          //             crossAxisSpacing: 20,
-                          //             mainAxisSpacing: 20),
-                          //     itemBuilder: (BuildContext ctx, index) {
-                          //       return Container(
-                          //         alignment: Alignment.center,
-                          //         child: const Text("hai jk"),
-                          //       );
-                          //     }),
-                          ),
-                      Visibility(
-                          visible: listItem[index].isSelected, child: Text("jk")
-                          // GridView.builder(
-                          //     gridDelegate:
-                          //         const SliverGridDelegateWithMaxCrossAxisExtent(
-                          //             maxCrossAxisExtent: 200,
-                          //             childAspectRatio: 3 / 2,
-                          //             crossAxisSpacing: 20,
-                          //             mainAxisSpacing: 20),
-                          //     itemBuilder: (BuildContext ctx, index) {
-                          //       return Container(
-                          //         alignment: Alignment.center,
-                          //         child: Text("hai reju"),
-                          //       );
-                          //     }),
-                          ),
-                      Visibility(
-                          visible: listItem[index].isSelected,
-                          child: Text("anandhu")
-                          // GridView.builder(
-                          //     gridDelegate:
-                          //         const SliverGridDelegateWithMaxCrossAxisExtent(
-                          //             maxCrossAxisExtent: 200,
-                          //             childAspectRatio: 3 / 2,
-                          //             crossAxisSpacing: 20,
-                          //             mainAxisSpacing: 20),
-                          //     itemBuilder: (BuildContext ctx, index) {
-                          //       return Container(
-                          //         alignment: Alignment.center,
-                          //         child: const Text("hai nidhi"),
-                          //       );
-                          //     }),
-                          ),
-                      Visibility(
-                          visible: listItem[index].isSelected,
-                          child: Text("net")
-                          // GridView.builder(
-                          //     gridDelegate:
-                          //         const SliverGridDelegateWithMaxCrossAxisExtent(
-                          //             maxCrossAxisExtent: 200,
-                          //             childAspectRatio: 3 / 2,
-                          //             crossAxisSpacing: 20,
-                          //             mainAxisSpacing: 20),
-                          //     itemBuilder: (BuildContext ctx, index) {
-                          //       return Container(
-                          //         alignment: Alignment.center,
-                          //         child: const Text("hai k"),
-                          //       );
-                          //     }),
-                          ),
-                      Visibility(
-                        visible: listItem[index].isSelected,
-                        child: Text("hello"),
-                        // GridView.builder(
-                        //     gridDelegate:
-                        //         const SliverGridDelegateWithMaxCrossAxisExtent(
-                        //             maxCrossAxisExtent: 200,
-                        //             childAspectRatio: 3 / 2,
-                        //             crossAxisSpacing: 20,
-                        //             mainAxisSpacing: 20),
-                        //     itemBuilder: (BuildContext ctx, index) {
-                        //       return Container(
-                        //         alignment: Alignment.center,
-                        //         child: const Text("hai anandhu"),
-                        //       );
-                        //     }),
-                      ),
-                      Visibility(
-                          visible: listItem[index].isSelected,
-                          child: Text("ammo")
-                          // GridView.builder(
-                          //     gridDelegate:
-                          //         const SliverGridDelegateWithMaxCrossAxisExtent(
-                          //             maxCrossAxisExtent: 200,
-                          //             childAspectRatio: 3 / 2,
-                          //             crossAxisSpacing: 20,
-                          //             mainAxisSpacing: 20),
-                          //     itemBuilder: (BuildContext ctx, index) {
-                          //       return Container(
-                          //         alignment: Alignment.center,
-                          //         child: const Text("hai jkk"),
-                          //       );
-                          //     }),
-                          ),
-                      Visibility(
-                          visible: listItem[index].isSelected,
-                          child: Text("jk king")
-                          // GridView.builder(
-                          //     gridDelegate:
-                          //         const SliverGridDelegateWithMaxCrossAxisExtent(
-                          //             maxCrossAxisExtent: 200,
-                          //             childAspectRatio: 3 / 2,
-                          //             crossAxisSpacing: 20,
-                          //             mainAxisSpacing: 20),
-                          //     itemBuilder: (BuildContext ctx, index) {
-                          //       return Container(
-                          //         alignment: Alignment.center,
-                          //         child: const Text("hai  aasw"),
-                          //       );
-                          //     }),
-                          ),
                     ],
                   );
                 }),
           ),
         ),
+        Visibility(
+          child: const Text('reju '),
+          // GridView.builder(
+          //     gridDelegate:
+          //         const SliverGridDelegateWithMaxCrossAxisExtent(
+          //       maxCrossAxisExtent: 200,
+          //       childAspectRatio: 3 / 2,
+          //     ),
+          //     itemBuilder: (BuildContext ctx, index) {
+          //       return Container(
+          //         alignment: Alignment.center,
+          //         child: const Text("hai"),
+          //       );
+          //     }),
+          visible: position != -1 && position == 0,
+        ),
+        Visibility(
+            visible: position != -1 && position == 1, child: const Text("bhama")
+            // GridView.builder(
+            //     gridDelegate:
+            //         const SliverGridDelegateWithMaxCrossAxisExtent(
+            //             maxCrossAxisExtent: 200,
+            //             childAspectRatio: 3 / 2,
+            //             crossAxisSpacing: 20,
+            //             mainAxisSpacing: 20),
+            //     itemBuilder: (BuildContext ctx, index) {
+            //       return Container(
+            //         alignment: Alignment.center,
+            //         child: const Text("hai jk"),
+            //       );
+            //     }),
+            ),
+        Visibility(
+            visible: position != -1 && position == 2, child: const Text("jk")
+            // GridView.builder(
+            //     gridDelegate:
+            //         const SliverGridDelegateWithMaxCrossAxisExtent(
+            //             maxCrossAxisExtent: 200,
+            //             childAspectRatio: 3 / 2,
+            //             crossAxisSpacing: 20,
+            //             mainAxisSpacing: 20),
+            //     itemBuilder: (BuildContext ctx, index) {
+            //       return Container(
+            //         alignment: Alignment.center,
+            //         child: Text("hai reju"),
+            //       );
+            //     }),
+            ),
+        Visibility(
+            visible: position != -1 && position == 3,
+            child: const Text("anandhu")
+            // GridView.builder(
+            //     gridDelegate:
+            //         const SliverGridDelegateWithMaxCrossAxisExtent(
+            //             maxCrossAxisExtent: 200,
+            //             childAspectRatio: 3 / 2,
+            //             crossAxisSpacing: 20,
+            //             mainAxisSpacing: 20),
+            //     itemBuilder: (BuildContext ctx, index) {
+            //       return Container(
+            //         alignment: Alignment.center,
+            //         child: const Text("hai nidhi"),
+            //       );
+            //     }),
+            ),
+        Visibility(
+            visible: position != -1 && position == 4, child: const Text("net")
+            // GridView.builder(
+            //     gridDelegate:
+            //         const SliverGridDelegateWithMaxCrossAxisExtent(
+            //             maxCrossAxisExtent: 200,
+            //             childAspectRatio: 3 / 2,
+            //             crossAxisSpacing: 20,
+            //             mainAxisSpacing: 20),
+            //     itemBuilder: (BuildContext ctx, index) {
+            //       return Container(
+            //         alignment: Alignment.center,
+            //         child: const Text("hai k"),
+            //       );
+            //     }),
+            ),
+        Visibility(
+          visible: position != -1 && position == 5,
+          child: const Text("hello"),
+          // GridView.builder(
+          //     gridDelegate:
+          //         const SliverGridDelegateWithMaxCrossAxisExtent(
+          //             maxCrossAxisExtent: 200,
+          //             childAspectRatio: 3 / 2,
+          //             crossAxisSpacing: 20,
+          //             mainAxisSpacing: 20),
+          //     itemBuilder: (BuildContext ctx, index) {
+          //       return Container(
+          //         alignment: Alignment.center,
+          //         child: const Text("hai anandhu"),
+          //       );
+          //     }),
+        ),
+        Visibility(
+            visible: position != -1 && position == 6, child: const Text("ammo")
+            // GridView.builder(
+            //     gridDelegate:
+            //         const SliverGridDelegateWithMaxCrossAxisExtent(
+            //             maxCrossAxisExtent: 200,
+            //             childAspectRatio: 3 / 2,
+            //             crossAxisSpacing: 20,
+            //             mainAxisSpacing: 20),
+            //     itemBuilder: (BuildContext ctx, index) {
+            //       return Container(
+            //         alignment: Alignment.center,
+            //         child: const Text("hai jkk"),
+            //       );
+            //     }),
+            ),
+        Visibility(
+            visible: position != -1 && position == 7,
+            child: const Text("jk king")
+            // GridView.builder(
+            //     gridDelegate:
+            //         const SliverGridDelegateWithMaxCrossAxisExtent(
+            //             maxCrossAxisExtent: 200,
+            //             childAspectRatio: 3 / 2,
+            //             crossAxisSpacing: 20,
+            //             mainAxisSpacing: 20),
+            //     itemBuilder: (BuildContext ctx, index) {
+            //       return Container(
+            //         alignment: Alignment.center,
+            //         child: const Text("hai  aasw"),
+            //       );
+            //     }),
+            ),
       ],
     );
   }

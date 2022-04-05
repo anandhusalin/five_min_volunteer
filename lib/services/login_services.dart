@@ -15,7 +15,7 @@ class LoginService {
     );
 
     var data = jsonDecode(response.body);
-
+    print(response.body);
     print("response");
     print(response.body);
 
