@@ -147,10 +147,14 @@ class _LoginState extends State<Login> {
                                   isLoading = false;
                                 });
                                 if (value.data != null) {
+                                  box.write(
+                                      'email', emailController.text.trim());
+                                  box.write('password',
+                                      passwordController.text.trim());
                                   box.write('user', 'value');
-                                  // box.write('token', value.data!.apiToken);
-                                  // print(box.read('token'));
-
+                                  box.write('Token', value.data!.apiToken);
+                                  print(box.read('email'));
+                                  print(box.read('password'));
                                   Navigator.pushReplacement(
                                       context,
                                       MaterialPageRoute(

@@ -1,12 +1,11 @@
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:bloc_volunteer_service/core/colors/colors.dart';
+import 'package:bloc_volunteer_service/core/constant.dart';
 import 'package:bloc_volunteer_service/model/services_model.dart';
 import 'package:bloc_volunteer_service/presentaion/addtask/requirement_screen.dart';
 import 'package:bloc_volunteer_service/services/service_services.dart';
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:bloc_volunteer_service/core/constant.dart';
-import 'package:image_picker/image_picker.dart';
-import 'package:http/http.dart ' as http;
 
 class AddScreen extends StatefulWidget {
   const AddScreen({Key? key}) : super(key: key);
@@ -280,6 +279,7 @@ class _AddScreenState extends State<AddScreen> {
                             issueLoc: locationController.text,
                             issuetitle: probleController.text,
                             title: solutionController.text,
+                            volLimit: count.toString(),
                           ));
                     });
                   },

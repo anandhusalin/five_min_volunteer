@@ -1,11 +1,15 @@
-import 'package:bloc_volunteer_service/core/colors/colors.dart';
-import 'package:bloc_volunteer_service/core/constant.dart';
-import 'package:bloc_volunteer_service/presentaion/widgets/text_controllers.dart';
 import 'package:flutter/material.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:http/http.dart' as http;
+
+import 'package:bloc_volunteer_service/core/colors/colors.dart';
+import 'package:bloc_volunteer_service/core/constant.dart';
+import 'package:bloc_volunteer_service/model/login_model.dart';
+import 'package:bloc_volunteer_service/presentaion/loginpage/login_page.dart';
+import 'package:bloc_volunteer_service/presentaion/widgets/text_controllers.dart';
+import 'package:bloc_volunteer_service/services/login_services.dart';
 
 import '../widgets/inputfield.dart';
-import 'package:http/http.dart' as http;
 
 class RequirementsScreen extends StatefulWidget {
   final String title;
@@ -14,9 +18,9 @@ class RequirementsScreen extends StatefulWidget {
   final String issueDesc;
   final String issueLoc;
   final String estDur;
-  String? volLimit;
+  final String volLimit;
 
-  RequirementsScreen({
+  const RequirementsScreen({
     Key? key,
     required this.title,
     required this.desc,
@@ -24,6 +28,7 @@ class RequirementsScreen extends StatefulWidget {
     required this.issueDesc,
     required this.issueLoc,
     required this.estDur,
+    required this.volLimit,
   }) : super(key: key);
 
   @override
@@ -56,7 +61,7 @@ class _RequirementsScreenState extends State<RequirementsScreen> {
     requirementsCount20
   ];
   var item = ['a', 'b', 'c'];
-  List controllers = [
+  List<TextEditingController> controllers = [
     requierment1,
     requierment2,
     requierment3,
@@ -335,7 +340,6 @@ class _RequirementsScreenState extends State<RequirementsScreen> {
               ),
               ElevatedButton(
                   onPressed: () {
-                 
                     setState(() {
                       length++;
                     });
@@ -352,6 +356,9 @@ class _RequirementsScreenState extends State<RequirementsScreen> {
                 child: ElevatedButton(
                   style: ElevatedButton.styleFrom(primary: primaryColor),
                   onPressed: () {
+                    addTaskApi();
+
+                    /// postman();
                     // Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>));
                   },
                   child: const Text(
@@ -370,8 +377,10 @@ class _RequirementsScreenState extends State<RequirementsScreen> {
     );
   }
 
-  addTaskApi() async {
-    var headers = {'Authorization': box.read('Token').toString()};
+  postman() async {
+    var headers = {
+      'Authorization': 'Bearer 310|bskm9NxouxGvq0Jjc9Q8nO4bweaKRuZeWu5qXRxB'
+    };
     var request = http.MultipartRequest('POST',
         Uri.parse('https://volunteer.cyberfort.co.in/api/save-service'));
     request.fields.addAll({
@@ -382,16 +391,64 @@ class _RequirementsScreenState extends State<RequirementsScreen> {
       'issue_desc': widget.issueDesc,
       'est_duration': widget.estDur,
       'task_requirement':
-          ' [ { "req_title": "Water", "req_count": 2, "req_unit": "Liter" }, { "req_title": "Manure", "req_count": 5, "req_unit": "Kilo" } ]',
-      'volunteer_limit': widget.volLimit.toString()
+          ' [ { "req_title": ${controllers[0].text}, "req_count": ${counts[0]}, "req_unit": ${dropDown[0]} }, { "req_title": "Manure", "req_count": 5, "req_unit": "Kilo" } ]',
+      'volunteer_limit': ' 5'
+      // 'task_requirement':
+      //     ' [ { "req_title": ${controllers[0].text}, "req_count": ${counts[0]}, "req_unit": ${dropDown[0]} }, { "req_title": "Manure", "req_count": 5, "req_unit": "Kilo" } ]',
+      // 'volunteer_limit': widget.volLimit.toString()
     });
-
     request.headers.addAll(headers);
 
     http.StreamedResponse response = await request.send();
 
     if (response.statusCode == 200) {
       print(await response.stream.bytesToString());
+    } else {
+      print(response.reasonPhrase);
+    }
+  }
+
+  addTaskApi() async {
+    print(widget.volLimit.toString());
+    // print(box.read('Token'));
+
+    var headers = {
+      'Authorization': 'Bearer 310|bskm9NxouxGvq0Jjc9Q8nO4bweaKRuZeWu5qXRxB'
+    };
+    print(headers);
+    var request = http.MultipartRequest('POST',
+        Uri.parse('https://volunteer.cyberfort.co.in/api/save-service'));
+    request.fields.addAll({
+      'task_title': widget.title,
+      'task_desc': widget.desc,
+      'issue_title': widget.issuetitle,
+      'issue_loc': widget.issueLoc,
+      'issue_desc': widget.issueDesc,
+      'est_duration': widget.estDur,
+      'task_requirement':
+          ' [ { "req_title": ${controllers[0].text}, "req_count": ${counts[0]}, "req_unit": ${dropDown[0]} }, { "req_title": "Manure", "req_count": 5, "req_unit": "Kilo" } ]',
+      'volunteer_limit': '5'
+    });
+
+    request.headers.addAll(headers);
+
+    http.StreamedResponse response = await request.send();
+    print(response.statusCode);
+    print(response.reasonPhrase);
+    if (response.statusCode == 200) {
+      print(await response.stream.bytesToString());
+    } else if (response.reasonPhrase == 'Unauthorized') {
+      loginModel = LoginRequestModel();
+      loginModel.email = box.read('email');
+      loginModel.password = box.read('password');
+      LoginService loginService = LoginService();
+      // loginService.login(loginModel).then((value) {
+      //   print(value.data!.apiToken);
+      //   box.remove('Token');
+      //   box.write('Token', value.data!.apiToken);
+      //addTaskApi();
+      // });
+      print(true);
     } else {
       print(response.reasonPhrase);
     }
